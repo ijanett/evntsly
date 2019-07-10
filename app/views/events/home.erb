@@ -1,4 +1,16 @@
 <h2>Welcome, guest!</h2>
 <br>
-    <h3>All Events</h3>
-    <p><strong></strong></p>
+    <section>
+        <h3>Upcoming Events</h3>
+        <% @events.each do |event| %>
+        <article onclick="window.location.href= '/events/<%=event.id%>';">
+            <h4><%= event.name %></h4>
+            <p>
+                <strong>Location:</strong> <%= event.location%><br>
+                <strong>Date:</strong> <%= event.date%>
+                <strong>| Time:</strong> <%= event.time%><br>
+                <%= event.description %>
+            </p>
+        </article>
+    </section>
+    <%end%>
