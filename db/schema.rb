@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 20190709202244) do
     t.string "name"
     t.string "location"
     t.string "date"
-    t.string "start_time"
-    t.string "end_time"
+    t.string "time"
     t.string "description"
   end
 
