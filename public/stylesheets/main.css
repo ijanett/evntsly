@@ -31,7 +31,7 @@
     width: 85%;
   }
   h1 {
-    font-family: 'Alex Brush', cursive;
+    font-family: 'Great Vibes', cursive;
     font-size: 73px;
     line-height: 64px;
   }
@@ -97,6 +97,31 @@
     text-align: left;
   }
 
+  nav {
+    clear: both;
+    color: #333;
+    background-color: rgba(76, 0, 130, 0.849);
+    height: 30px;
+  }
+
+  nav ul {
+    margin: 0px;
+    padding: 5px 0px 5px 30px;
+  }
+
+  nav li {
+    display: inline;
+    margin-right: 40px;
+  }
+
+  nav li a {
+    color: #eee;
+  }
+
+  nav li a:hover, nav li a.current {
+    color: rgb(154, 186, 194);
+  }
+
   legend {
     background-color: #efefef;
     border: 1px solid #dcdcdc;
@@ -104,6 +129,17 @@
     padding: 10px 20px;
     text-align: left;
     text-transform: uppercase;
+  }
+
+  button[onclick] {
+    background-color: indigo;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+    padding: 4px 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-align: right;
   }
 
   input[type=submit] {
