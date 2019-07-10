@@ -6,7 +6,7 @@ class GuestsController < ApplicationController
     end
 
     post '/signup' do
-        @guest = Guest.create(name: params[:name], email: params[:email], username: params[:username], password: params[:password])
+        @guest = Guest.create(username: params[:username], email: params[:email], password: params[:password])
         # session[:guest_id] = @guest.id
         binding.pry
         erb :'/events'

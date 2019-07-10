@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20190709202244) do
   end
 
   create_table "guests", force: :cascade do |t|
-    t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"
