@@ -1,4 +1,4 @@
-<h2>Welcome, guest!</h2>
+<h2>Welcome, <%= @guest.username %>!</h2>
 <br>
     <section>
         <h3>Upcoming Events</h3>
@@ -9,7 +9,7 @@
                 <strong>Location:</strong> <%= event.location%><br>
                 <strong>Date:</strong> <%= event.date%>
                 <strong>| Time:</strong> <%= event.time%><br>
-                <%= event.description %>
+                <div id="descriptions"><%= event.description %></div>
             </p>
         </article>
     </section>

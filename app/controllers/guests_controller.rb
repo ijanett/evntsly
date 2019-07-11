@@ -7,8 +7,39 @@ class GuestsController < ApplicationController
 
     post '/signup' do
         @guest = Guest.create(username: params[:username], email: params[:email], password: params[:password])
-        # session[:guest_id] = @guest.id
-        binding.pry
-        erb :'/events'
+        session[:guest_id] = @guest.id
+        # binding.pry
+        redirect '/events'
+    end
+
+    get '/login' do
+        if logged_in?
+            redirect '/events'
+        else
+            erb :'/guests/login'
+        end
+    end
+
+    post '/login' do
+        @guest = Guest.find_by(username: params[:username])
+# binding.pry
+        if @guest && @guest.authenticate(params[:password])
+            session[:guest_id] = @guest.id
+            redirect '/events'
+        else
+            redirect '/login'
+        end
+    end
+
+    get '/:username' do
+        @guest = Guest.find_by(username: params[:username])
+        @guest_events = @guest.events
+# binding.pry
+        erb :'guests/show'
+    end
+
+    get '/logout' do
+        session[:guest_id].clear
+        redirect '/'
     end
 end

@@ -10,17 +10,30 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :index
+    if logged_in?
+      redirect '/events'
+    else
+      erb :index
+    end
   end
 
   helpers do
-    def current_user
-      Guest.find(session[:guest_id])
-    end
-
     def logged_in?
       !!session[:guest_id]
     end
+
+    def current_user
+      if logged_in?
+        Guest.find(session[:guest_id])
+      else 
+        nil
+      end
+    end
+
+    # def current_user_events
+    #   if logged_in?
+
+    # end
   end
   
 end

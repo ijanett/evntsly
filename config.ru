@@ -7,3 +7,4 @@ end
 run ApplicationController
 use EventsController
 use GuestsController
+use EventGuestsController

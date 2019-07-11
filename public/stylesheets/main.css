@@ -152,7 +152,7 @@
     cursor: pointer;
     box-align: right;
   }
-
+ /* Event boxes/sections on home page */
   article {
     background-color: rgba(233, 215, 243, 0.349);
     margin: 30px auto 30px auto;
@@ -167,6 +167,41 @@
     -webkit-box-shadow: 0 0 10px #777777;
     box-shadow: 0 0 10px #777777;
   }
+
+  /* The alert message box */
+  .alert {
+    padding: 10px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+  }
+
+  /* The close button */
+  .closebtn {
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+  /* Event descriptions on home page */
+  #descriptions { 
+    width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
 }
 
 @media screen and (max-width: 600px) {
