@@ -1,0 +1,11 @@
+<h2>Account Details</h2>
+<form action='/account' method='POST'>
+    <input type="hidden" name="_method" value="patch">
+    <label><h4>Username:</h4></label> 
+    <input type="text" name="username" value="<%= current_user.username %>" required="required">
+    <label><h4>Email:</h4></label>
+    <input type="text" name="email" value="<%= current_user.email %>" required="required">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>

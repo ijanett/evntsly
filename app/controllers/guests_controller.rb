@@ -18,6 +18,22 @@ class GuestsController < ApplicationController
         erb :'/guests/account'
     end
 
+    get '/account/edit' do
+        if current_user
+            erb :'/guests/edit'
+        else
+            redirect '/login'
+        end
+    end
+
+    patch '/account' do
+        @guest = Guest.find(session[:guest_id])
+        # binding.pry
+        @guest.update(username: params[:username], email: params[:email])
+
+        redirect '/account'
+    end
+
     get '/login' do
         if logged_in?
             redirect '/events'
@@ -37,13 +53,6 @@ class GuestsController < ApplicationController
         end
     end
 
-    get '/:username' do
-        @guest = Guest.find_by(username: params[:username])
-        @guest_events = @guest.events
-# binding.pry
-        erb :'guests/show'
-    end
-
     get '/logout' do
         if logged_in?
             # binding.pry
@@ -53,4 +62,13 @@ class GuestsController < ApplicationController
             redirect '/'
         end
     end
+
+    get '/:username' do
+        @guest = Guest.find_by(username: params[:username])
+        @guest_events = @guest.events
+# binding.pry
+        erb :'guests/show'
+    end
+
+    
 end
