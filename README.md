@@ -8,10 +8,10 @@ evntsly is a simple CMS Ruby app built with Sinatra that provides a list of even
    - edit user account information
 
 Future updates may include:
-    - ability to signup/login as an event planner
-    - an event planner would be able to create/edit their events as needed.
-    - section for commenting/asking questions in an individual event's page.
-    - design improvements
+   - ability to signup/login as an event planner
+   - an event planner would be able to create/edit their events as needed.
+   - section for commenting/asking questions in an individual event's page.
+   - design improvements
 
 ## Installation
 
