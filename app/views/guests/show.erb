@@ -8,9 +8,10 @@
             <strong>Location:</strong> <%= event.location%><br>
             <strong>Date:</strong> <%= event.date%>
             <strong>| Time:</strong> <%= event.time%><br>
+            <strong>Description</strong> <%= event.description %>
         </p>
-        <form action="/event_guests/delete" method="post">
-            <input id="hidden" type="hidden" name="_method" value="delete">
+        <form action="/delete/<%=event.id%>" method="post">
+            <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="event_guest[event_id]" value="<%=event.id%>">
             <input type="submit" value="cancel RSVP">
         </form>

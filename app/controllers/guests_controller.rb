@@ -12,6 +12,12 @@ class GuestsController < ApplicationController
         redirect '/events'
     end
 
+    get '/account' do
+        @guest = Guest.find(session[:guest_id])
+
+        erb :'/guests/account'
+    end
+
     get '/login' do
         if logged_in?
             redirect '/events'
@@ -42,7 +48,7 @@ class GuestsController < ApplicationController
         if logged_in?
             # binding.pry
             session.clear
-            erb :'/guests/login'
+            redirect '/login'
         else
             redirect '/'
         end

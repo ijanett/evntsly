@@ -7,14 +7,14 @@ class EventGuestsController < ApplicationController
         redirect "/#{guest.username}"
     end
 
-    delete '/event_guests/delete' do
+    delete '/delete/:id' do
         # guest_event = EventGuest.find_by(params[:event_guest])
         # guest = Guest.find(params[:event_guest][:guest_id])
         # guest_event.delete
-    
-        guest = Guest.find_by_id(params[:event_guest][:guest_id])
-        event = guest.events.find(params[:event_guest][:event_id])
-        binding.pry
+    # binding.pry
+        event = EventGuest.find_by(params[:event_guest])
+        guest = current_user
+#  binding.pry       
         event.delete
         redirect "/#{guest.username}"
     end
