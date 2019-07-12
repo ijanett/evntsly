@@ -4,7 +4,7 @@ evntsly is a simple CMS Ruby app built with Sinatra that provides a list of even
    - signup/login/logout
    - rsvp to events
    - un-rsvp to events
-   - see a list of all rsvp'd-to events
+   - see a list of all events they've rsvp'd to
    - edit user account information
 
 Future updates may include:
