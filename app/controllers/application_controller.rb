@@ -29,11 +29,6 @@ class ApplicationController < Sinatra::Base
         nil
       end
     end
-
-    # def current_user_events
-    #   if logged_in?
-
-    # end
   end
   
 end

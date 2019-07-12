@@ -39,7 +39,12 @@ class GuestsController < ApplicationController
     end
 
     get '/logout' do
-        session[:guest_id].clear
-        redirect '/'
+        if logged_in?
+            # binding.pry
+            session.clear
+            erb :'/guests/login'
+        else
+            redirect '/'
+        end
     end
 end
