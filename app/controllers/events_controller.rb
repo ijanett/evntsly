@@ -4,7 +4,7 @@ class EventsController < ApplicationController
         if logged_in?
             @events = Event.all
             @guest = current_user
-# binding.pry
+
             erb :'/events/home'
         else
             redirect to '/login'

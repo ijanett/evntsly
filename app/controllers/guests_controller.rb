@@ -8,7 +8,7 @@ class GuestsController < ApplicationController
     post '/signup' do
         @guest = Guest.create(username: params[:username], email: params[:email], password: params[:password])
         session[:guest_id] = @guest.id
-        # binding.pry
+        
         redirect '/events'
     end
 
@@ -28,7 +28,6 @@ class GuestsController < ApplicationController
 
     patch '/account' do
         @guest = Guest.find(session[:guest_id])
-        # binding.pry
         @guest.update(username: params[:username], email: params[:email])
 
         redirect '/account'
@@ -44,7 +43,7 @@ class GuestsController < ApplicationController
 
     post '/login' do
         @guest = Guest.find_by(username: params[:username])
-# binding.pry
+
         if @guest && @guest.authenticate(params[:password])
             session[:guest_id] = @guest.id
             redirect '/events'
@@ -55,7 +54,6 @@ class GuestsController < ApplicationController
 
     get '/logout' do
         if logged_in?
-            # binding.pry
             session.clear
             redirect '/login'
         else
@@ -65,10 +63,14 @@ class GuestsController < ApplicationController
 
     get '/:username' do
         @guest = Guest.find_by(username: params[:username])
-        @guest_events = @guest.events
-# binding.pry
+        
+        if @guest.username != current_user.username
+            redirect "/#{current_user.username}"
+        else
+            @guest_events = @guest.events
+        end
+
         erb :'guests/show'
     end
 
-    
 end
