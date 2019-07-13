@@ -62,15 +62,22 @@ class GuestsController < ApplicationController
     end
 
     get '/:username' do
-        @guest = Guest.find_by(username: params[:username])
-        
-        if @guest.username != current_user.username
+        if !logged_in?
+            redirect "/login"
+        elsif user_not_found
             redirect "/#{current_user.username}"
-        else
-            @guest_events = @guest.events
-        end
-
-        erb :'guests/show'
+        else logged_in?
+            @guest = Guest.find_by(username: params[:username])
+            
+            if @guest.username != current_user.username
+             redirect "/#{current_user.username}"
+        
+            else
+                @guest_events = @guest.events
+            end
+            
+            erb :'guests/show'
+        end   
     end
 
 end

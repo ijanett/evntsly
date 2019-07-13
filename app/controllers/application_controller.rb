@@ -29,6 +29,12 @@ class ApplicationController < Sinatra::Base
         nil
       end
     end
+
+    def user_not_found
+      if logged_in?
+        !Guest.exists?(params)
+      end
+    end
   end
   
 end
