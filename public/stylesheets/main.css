@@ -16,7 +16,7 @@
   body {
     background-color: white;
     color: #333;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Oxygen', sans-serif;
     line-height: 18px;
   }
 
@@ -32,13 +32,14 @@
   }
   h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 73px;
-    line-height: 64px;
+    font-size: 100px;
+    line-height: 60px;
+    padding-top: 7%;
   }
 
   h2 {
     font-size: 30px;
-    line-height: 54px;
+    line-height: 64px;
   }
 
   h3 {
@@ -65,6 +66,7 @@
   .content {
     float: left;
     width: 60%; /* 480px / 800px */
+    padding-top: 7%;
   }
 
   .sidebar {
@@ -100,7 +102,7 @@
   nav {
     clear: both;
     color: #333;
-    background-color: rgba(76, 0, 130, 0.849);
+    background-color: rgb(106, 59, 116);
     height: 30px;
   }
 
@@ -137,9 +139,9 @@
   }
 
   button[onclick] {
-    background-color: indigo;
+    background-color: rgb(106, 59, 116);
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     color: #eee;
     padding: 4px 10px;
     margin: 4px 2px;
@@ -148,7 +150,7 @@
   }
 
   input[type=submit] {
-    background-color: indigo;
+    background-color: rgb(106, 59, 116);
     border: none;
     border-radius: 10px;
     color: #eee;
@@ -208,7 +210,6 @@
     white-space: nowrap;
     overflow: hidden;
   }
-
 }
 
 @media screen and (max-width: 600px) {
