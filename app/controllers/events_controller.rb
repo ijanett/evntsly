@@ -3,7 +3,6 @@ class EventsController < ApplicationController
     get '/events' do
         if logged_in?
             @events = Event.all
-            # binding.pry
             @guest = current_user
 
             erb :'/events/home'
@@ -13,7 +12,9 @@ class EventsController < ApplicationController
     end
 
     get '/events/:id' do
-        if logged_in?
+        if event_not_found
+            redirect '/events'
+        elsif logged_in?
             @event = Event.find_by_id(params[:id])
             @current_user = current_user
             erb :'/events/show'

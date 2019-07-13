@@ -35,6 +35,12 @@ class ApplicationController < Sinatra::Base
         !Guest.exists?(params)
       end
     end
+
+    def event_not_found
+      if logged_in?
+        !Event.exists?(params)
+      end
+    end
   end
   
 end
