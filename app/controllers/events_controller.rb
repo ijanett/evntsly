@@ -3,6 +3,7 @@ class EventsController < ApplicationController
     get '/events' do
         if logged_in?
             @events = Event.all
+            # binding.pry
             @guest = current_user
 
             erb :'/events/home'

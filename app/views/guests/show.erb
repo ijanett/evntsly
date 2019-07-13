@@ -8,7 +8,7 @@
             <strong>Location:</strong> <%= event.location%><br>
             <strong>Date:</strong> <%= event.date%>
             <strong>| Time:</strong> <%= event.time%><br>
-            <strong>Description</strong> <%= event.description %>
+            <strong>Details:</strong><br> <%= event.description %>
         </p>
         <form action="/delete/<%=event.id%>" method="post">
             <input type="hidden" name="_method" value="delete">
