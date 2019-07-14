@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
             erb :'/events/home'
         else
+            flash[:login] = "You must be logged in to do that!"
             redirect to '/login'
         end
     end

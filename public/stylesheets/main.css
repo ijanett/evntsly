@@ -188,11 +188,12 @@
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    width: 30%;
+    width: 40%;
   }
 
   /* The close button */
   .closebtn {
+    margin-bottom: 20px;
     margin-left: 10px;
     color: #333;
     font-weight: bold;
