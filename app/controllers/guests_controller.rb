@@ -82,13 +82,13 @@ class GuestsController < ApplicationController
             flash[:login] = "You must be logged in to do that!"
             redirect "/login"
         elsif user_not_found
-            flash[:warning] = "Invalid request."
+            flash[:error] = "Invalid request."
             redirect "/#{current_user.username}"
         else logged_in?
             @guest = Guest.find_by(username: params[:username])
             
             if @guest.username != current_user.username
-                flash[:warning] = "Invalid request."
+                flash[:error] = "Invalid request."
                 redirect "/#{current_user.username}"
             else
                 @guest_events = @guest.events

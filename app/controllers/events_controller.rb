@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
     get '/events/:id' do
         if event_not_found
-            flash[:warning] = "Invalid request."
+            flash[:error] = "Invalid request."
             redirect '/events'
         elsif logged_in?
             @event = Event.find_by_id(params[:id])
