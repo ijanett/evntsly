@@ -6,16 +6,27 @@ class GuestsController < ApplicationController
     end
 
     post '/signup' do
-        @guest = Guest.create(username: params[:username], email: params[:email], password: params[:password])
-        session[:guest_id] = @guest.id
+        @guest = Guest.find_by(username: params[:username].downcase)
+        if @guest
+            flash[:warning] = "Username already exists."
+            redirect '/signup'
+        else
+            @guest = Guest.create(username: params[:username], email: params[:email], password: params[:password])
+            session[:guest_id] = @guest.id
         
-        redirect '/events'
+            redirect '/events'
+        end
     end
 
     get '/account' do
-        @guest = Guest.find(session[:guest_id])
+        if !logged_in?
+            flash[:login] = "You must be logged in to do that!"
+            redirect '/login'
+        else
+            @guest = Guest.find(session[:guest_id])
 
-        erb :'/guests/account'
+            erb :'/guests/account'
+        end
     end
 
     get '/account/edit' do
@@ -27,10 +38,14 @@ class GuestsController < ApplicationController
     end
 
     patch '/account' do
-        @guest = Guest.find(session[:guest_id])
-        @guest.update(username: params[:username], email: params[:email])
-
-        redirect '/account'
+        @guest = Guest.find_by(username: params[:username].downcase)
+        if @guest
+            flash[:warning] = "Username already exists."
+            redirect '/account/edit'
+        else
+            @guest.update(username: params[:username], email: params[:email])
+            redirect '/account'
+        end
     end
 
     get '/login' do
@@ -48,6 +63,7 @@ class GuestsController < ApplicationController
             session[:guest_id] = @guest.id
             redirect '/events'
         else
+            flash[:invalid] = "Invalid username or password."
             redirect '/login'
         end
     end
@@ -63,15 +79,17 @@ class GuestsController < ApplicationController
 
     get '/:username' do
         if !logged_in?
+            flash[:login] = "You must be logged in to do that!"
             redirect "/login"
         elsif user_not_found
+            flash[:warning] = "Invalid request."
             redirect "/#{current_user.username}"
         else logged_in?
             @guest = Guest.find_by(username: params[:username])
             
             if @guest.username != current_user.username
-             redirect "/#{current_user.username}"
-        
+                flash[:warning] = "Invalid request."
+                redirect "/#{current_user.username}"
             else
                 @guest_events = @guest.events
             end
