@@ -1,8 +1,12 @@
 class GuestsController < ApplicationController
 
     get '/signup' do
+        if logged_in?
+            redirect '/events'
+        else
         
-        erb :'/guests/signup'
+            erb :'/guests/signup'
+        end
     end
 
     post '/signup' do
