@@ -11,6 +11,7 @@ class EventGuestsController < ApplicationController
         event = EventGuest.find_by(params[:event_guest])
         guest = current_user
         event.delete
+        flash[:success] = "RSVP cancelled successfully!"
         redirect "/#{guest.username}"
     end
 end

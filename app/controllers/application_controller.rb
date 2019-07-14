@@ -42,6 +42,10 @@ class ApplicationController < Sinatra::Base
         !Event.exists?(params)
       end
     end
+
+    def invalid_event_guest
+        !EventGuest.exists?(params)
+    end
   end
   
 end
