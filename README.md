@@ -1,6 +1,6 @@
 # evntsly
 
-evntsly is a simple CMS Ruby app built with Sinatra that provides a list of events from the seeded database. This app allows a user to: 
+evntsly is a simple MVC Ruby app built with Sinatra that provides a list of events from the seeded database. This app allows a user to: 
    - signup/login/logout
    - rsvp to events
    - un-rsvp to events
