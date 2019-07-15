@@ -43,7 +43,7 @@ class GuestsController < ApplicationController
 
     patch '/account' do
         @guest = Guest.find_by(username: params[:username].downcase)
-        if @guest
+        if @guest != current_user
             flash[:warning] = "Username already exists."
             redirect '/account/edit'
         else
