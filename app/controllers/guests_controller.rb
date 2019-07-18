@@ -48,6 +48,7 @@ class GuestsController < ApplicationController
             redirect '/account/edit'
         else
             @guest.update(username: params[:username], email: params[:email])
+            flash[:update] = "Account updated successfully!"
             redirect '/account'
         end
     end
