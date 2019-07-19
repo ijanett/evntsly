@@ -7,8 +7,13 @@
 <%= @event.description %>
 <br>
 <br>
+<%@event_guest = EventGuest.find_by(event_id: @event.id, guest_id: @current_user.id)%>
+<%if @event_guest%>
+<div id="rsvpd"><small>You're on the guest list for this event!</small></div>
+<%else%>
 <form action="/event_guests" method="post">
     <input type="hidden" name="event_guest[event_id]" value="<%=@event.id%>">
     <input type="hidden" name="event_guest[guest_id]" value="<%=@current_user.id%>">
     <input type="submit" value="RSVP">
 </form>
+<%end%>

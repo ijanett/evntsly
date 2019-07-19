@@ -138,6 +138,10 @@
     text-transform: uppercase;
   }
 
+  div#rsvpd {
+    color: #63586fea
+  }
+
   button[onclick] {
     background-color: rgb(106, 59, 116);
     border: none;
